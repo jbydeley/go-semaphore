@@ -1,3 +1,10 @@
+/*
+  Go-Semaphore
+
+  // For Example
+  //  api := NewApi("authorization_token")
+  //  branch, err := api.GetBranchStatus("hash_id", branch_id)
+*/
 package semaphore
 
 import (
