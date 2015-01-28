@@ -1,9 +1,4 @@
 // Go-Semaphore
-
-// // For Example
-// //  api := NewApi("authorization_token")
-// //  branch, err := api.GetBranchStatus("hash_id", branch_id)
-
 package semaphore
 
 import (
@@ -37,6 +32,9 @@ type Api struct {
 	httpClient         *http.Client
 }
 
+// // For Example
+// //  api := NewApi("authorization_token")
+// //  branch, err := api.GetBranchStatus("hash_id", branch_id)
 func NewApi(auth string) *Api {
 	return &Api{auth, "https://semaphoreapp.com", http.DefaultClient}
 }
