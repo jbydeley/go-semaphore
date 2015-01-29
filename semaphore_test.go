@@ -30,4 +30,5 @@ func testApiCall(code int, body string) (*httptest.Server, *Api) {
 // authorization token.
 func ExampleExamples() {
 	NewApi("auth_token")
+	// Output: api
 }
