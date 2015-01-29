@@ -1,5 +1,6 @@
 package semaphore
 
+// BuildInformation model
 type BuildInformation struct {
 	Commits     []Commit `json:"commits"`
 	ProjectName string   `json:"project_name"`

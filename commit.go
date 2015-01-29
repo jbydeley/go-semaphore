@@ -1,5 +1,6 @@
 package semaphore
 
+// Commit model
 type Commit struct {
 	ID        string `json:"ID"`
 	URL       string `json:"url"`

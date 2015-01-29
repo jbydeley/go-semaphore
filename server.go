@@ -1,5 +1,6 @@
 package semaphore
 
+// Server model
 type Server struct {
 	ProjectName  string `json:"project_name"`
 	ServerName   string `json:"server_name"`

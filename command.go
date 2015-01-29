@@ -1,5 +1,6 @@
 package semaphore
 
+// Command model
 type Command struct {
 	Name     string `json:"name"`
 	Result   string `json:"result"`

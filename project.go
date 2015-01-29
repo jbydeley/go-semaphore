@@ -1,5 +1,6 @@
 package semaphore
 
+// Project model
 type Project struct {
 	ID       int            `json:"ID"`
 	HashID   string         `json:"hash_ID"`

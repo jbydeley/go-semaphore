@@ -1,5 +1,6 @@
 package semaphore
 
+// BranchStatus model
 type BranchStatus struct {
 	Name         string `json:"branch_name"`
 	BranchURL    string `json:"branch_url"`

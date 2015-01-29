@@ -1,5 +1,6 @@
 package semaphore
 
+// Branch model
 type Branch struct {
 	ID   int    `json:"ID"`
 	Name string `json:"name"`

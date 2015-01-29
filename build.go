@@ -1,5 +1,6 @@
 package semaphore
 
+// Build model
 type Build struct {
 	URL         string `json:"build_url"`
 	InfoURL     string `json:"build_info_url"`
