@@ -38,3 +38,33 @@ func Test_GetBranches_Success(t *testing.T) {
 		t.Errorf("Response dID not match expected \nA: %v\n\n E: %v\n\n", actual, expected)
 	}
 }
+
+func Test_GetBranches_NotFound(t *testing.T) {
+	server, client := testAPICall(404, "")
+	defer server.Close()
+
+	results, err := client.GetBranches("123")
+
+	if err != ErrHttpNotFound {
+		t.Error("Should have recieved 404 but did not")
+	}
+
+	if results != nil {
+		t.Error("Results should be nil")
+	}
+}
+
+func Test_GetBranches_FailedAuthentication(t *testing.T) {
+	server, client := testAPICall(401, "")
+	defer server.Close()
+
+	results, err := client.GetBranches("123")
+
+	if err != ErrNotAuthorized {
+		t.Error("Should have recieved 401 but did not")
+	}
+
+	if results != nil {
+		t.Error("Results should be nil")
+	}
+}

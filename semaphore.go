@@ -3,9 +3,16 @@ package semaphore
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
+)
+
+var (
+	ErrHttpNotFound          = errors.New("Request returned 404")
+	ErrResponseNotRecognized = errors.New("Response could not be decoded")
+	ErrNotAuthorized         = errors.New("Authentication failed. Check auth_token?")
 )
 
 const (
@@ -24,7 +31,15 @@ func (a *Semaphore) request(URL string) ([]byte, error) {
 	}
 	defer resp.Body.Close()
 
-	return ioutil.ReadAll(resp.Body)
+	switch resp.StatusCode {
+	case 404:
+		return nil, ErrHttpNotFound
+	case 401:
+		return nil, ErrNotAuthorized
+	default:
+		return ioutil.ReadAll(resp.Body)
+	}
+
 }
 
 // Semaphore API
@@ -48,7 +63,7 @@ func (a *Semaphore) GetProjects() ([]Project, error) {
 
 	var projects []Project
 	if err = json.Unmarshal(response, &projects); err != nil {
-		return nil, err
+		return nil, ErrResponseNotRecognized
 	}
 	return projects, nil
 }
@@ -63,7 +78,7 @@ func (a *Semaphore) GetBranches(project string) ([]Branch, error) {
 
 	var branches []Branch
 	if err = json.Unmarshal(response, &branches); err != nil {
-		return nil, err
+		return nil, ErrResponseNotRecognized
 	}
 	return branches, nil
 }
@@ -78,7 +93,7 @@ func (a *Semaphore) GetBranchStatus(project string, branch int) (*BranchStatus, 
 
 	var status *BranchStatus
 	if err = json.Unmarshal(response, &status); err != nil {
-		return nil, err
+		return nil, ErrResponseNotRecognized
 	}
 	return status, nil
 }
@@ -93,7 +108,7 @@ func (a *Semaphore) GetBranchHistory(project string, branch int) (*BranchHistory
 
 	var history *BranchHistory
 	if err = json.Unmarshal(response, &history); err != nil {
-		return nil, err
+		return nil, ErrResponseNotRecognized
 	}
 	return history, nil
 }
@@ -108,7 +123,7 @@ func (a *Semaphore) GetBuildInformation(project string, branch, build int) (*Bui
 
 	var info *BuildInformation
 	if err = json.Unmarshal(response, &info); err != nil {
-		return nil, err
+		return nil, ErrResponseNotRecognized
 	}
 	return info, nil
 }
@@ -123,7 +138,7 @@ func (a *Semaphore) GetBuildLog(project string, branch, build int) (*BuildLog, e
 
 	var log *BuildLog
 	if err = json.Unmarshal(response, &log); err != nil {
-		return nil, err
+		return nil, ErrResponseNotRecognized
 	}
 	return log, nil
 }
