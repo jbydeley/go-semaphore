@@ -29,5 +29,5 @@ func testApiCall(code int, body string) (*httptest.Server, *Api) {
 // To create an API you'll need to give your
 // authorization token.
 func ExampleExamples() {
-	api := NewApi("auth_token")
+	NewApi("auth_token")
 }
