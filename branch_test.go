@@ -7,26 +7,26 @@ import (
 
 func Test_GetBranches_Success(t *testing.T) {
 	expected := []Branch{
-		{1324, "new-build-page", "https://semaphoreapp.com/api/v1/projects/:hash_id/1324/status?auth_token=:auth_token"},
-		{1120, "development", "https://semaphoreapp.com/api/v1/projects/:hash_id/1120/status?auth_token=:auth_token"},
-		{987, "branches_api", "https://semaphoreapp.com/api/v1/projects/:hash_id/987/status?auth_token=:auth_token"},
+		{1324, "new-build-page", "https://semaphoreapp.com/api/v1/projects/:hash_ID/1324/status?auth_token=:auth_token"},
+		{1120, "development", "https://semaphoreapp.com/api/v1/projects/:hash_ID/1120/status?auth_token=:auth_token"},
+		{987, "branches_api", "https://semaphoreapp.com/api/v1/projects/:hash_ID/987/status?auth_token=:auth_token"},
 	}
 	server, client := testAPICall(200, `
       [
          {
-            "id": 1324,
+            "ID": 1324,
             "name": "new-build-page",
-            "branch_URL": "https://semaphoreapp.com/api/v1/projects/:hash_id/1324/status?auth_token=:auth_token"
+            "branch_URL": "https://semaphoreapp.com/api/v1/projects/:hash_ID/1324/status?auth_token=:auth_token"
          },
          {
-            "id": 1120,
+            "ID": 1120,
             "name": "development",
-            "branch_URL": "https://semaphoreapp.com/api/v1/projects/:hash_id/1120/status?auth_token=:auth_token"
+            "branch_URL": "https://semaphoreapp.com/api/v1/projects/:hash_ID/1120/status?auth_token=:auth_token"
          },
          {
-            "id": 987,
+            "ID": 987,
             "name": "branches_api",
-            "branch_URL": "https://semaphoreapp.com/api/v1/projects/:hash_id/987/status?auth_token=:auth_token"
+            "branch_URL": "https://semaphoreapp.com/api/v1/projects/:hash_ID/987/status?auth_token=:auth_token"
          }
       ]`)
 	defer server.Close()
@@ -35,6 +35,6 @@ func Test_GetBranches_Success(t *testing.T) {
 	actual, _ := client.GetBranches("123")
 
 	if !reflect.DeepEqual(actual, expected) {
-		t.Errorf("Response did not match expected \nA: %v\n\n E: %v\n\n", actual, expected)
+		t.Errorf("Response dID not match expected \nA: %v\n\n E: %v\n\n", actual, expected)
 	}
 }

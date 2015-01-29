@@ -17,8 +17,8 @@ const (
 	getBuildLogURL         = "%v/api/v1/projects/%v/%v/builds/%v/log?auth_token=%v"
 )
 
-func (a *Api) request(url string) ([]byte, error) {
-	resp, err := a.httpClient.Get(url)
+func (a *Semaphore) request(URL string) ([]byte, error) {
+	resp, err := a.httpClient.Get(URL)
 	if err != nil {
 		return nil, err
 	}
@@ -27,21 +27,21 @@ func (a *Api) request(url string) ([]byte, error) {
 	return ioutil.ReadAll(resp.Body)
 }
 
-type Api struct {
-	authToken, baseUrl string
+type Semaphore struct {
+	authToken, baseURL string
 	httpClient         *http.Client
 }
 
 // // For Example
 // //  api := NewApi("authorization_token")
-// //  branch, err := api.GetBranchStatus("hash_id", branch_id)
-func NewApi(auth string) *Api {
-	return &Api{auth, "https://semaphoreapp.com", http.DefaultClient}
+// //  branch, err := api.GetBranchStatus("hash_ID", branch_ID)
+func NewSemaphore(auth string) *Semaphore {
+	return &Semaphore{auth, "https://semaphoreapp.com", http.DefaultClient}
 }
 
-func (a *Api) GetProjects() ([]Project, error) {
-	url := fmt.Sprintf(getProjectsURL, a.baseUrl, a.authToken)
-	response, err := a.request(url)
+func (a *Semaphore) GetProjects() ([]Project, error) {
+	URL := fmt.Sprintf(getProjectsURL, a.baseURL, a.authToken)
+	response, err := a.request(URL)
 	if err != nil {
 		return nil, err
 	}
@@ -53,9 +53,9 @@ func (a *Api) GetProjects() ([]Project, error) {
 	return projects, nil
 }
 
-func (a *Api) GetBranches(project string) ([]Branch, error) {
-	url := fmt.Sprintf(getBranchesURL, a.baseUrl, project, a.authToken)
-	response, err := a.request(url)
+func (a *Semaphore) GetBranches(project string) ([]Branch, error) {
+	URL := fmt.Sprintf(getBranchesURL, a.baseURL, project, a.authToken)
+	response, err := a.request(URL)
 	if err != nil {
 		return nil, err
 	}
@@ -67,9 +67,9 @@ func (a *Api) GetBranches(project string) ([]Branch, error) {
 	return branches, nil
 }
 
-func (a *Api) GetBranchStatus(project string, branch int) (*BranchStatus, error) {
-	url := fmt.Sprintf(getBranchStatusURL, a.baseUrl, project, branch, a.authToken)
-	response, err := a.request(url)
+func (a *Semaphore) GetBranchStatus(project string, branch int) (*BranchStatus, error) {
+	URL := fmt.Sprintf(getBranchStatusURL, a.baseURL, project, branch, a.authToken)
+	response, err := a.request(URL)
 	if err != nil {
 		return nil, err
 	}
@@ -81,9 +81,9 @@ func (a *Api) GetBranchStatus(project string, branch int) (*BranchStatus, error)
 	return status, nil
 }
 
-func (a *Api) GetBranchHistory(project string, branch int) (*BranchHistory, error) {
-	url := fmt.Sprintf(getBranchHistoryURL, a.baseUrl, project, branch, a.authToken)
-	response, err := a.request(url)
+func (a *Semaphore) GetBranchHistory(project string, branch int) (*BranchHistory, error) {
+	URL := fmt.Sprintf(getBranchHistoryURL, a.baseURL, project, branch, a.authToken)
+	response, err := a.request(URL)
 	if err != nil {
 		return nil, err
 	}
@@ -95,9 +95,9 @@ func (a *Api) GetBranchHistory(project string, branch int) (*BranchHistory, erro
 	return history, nil
 }
 
-func (a *Api) GetBuildInformation(project string, branch, build int) (*BuildInformation, error) {
-	url := fmt.Sprintf(getBuildInformationURL, a.baseUrl, project, branch, build, a.authToken)
-	response, err := a.request(url)
+func (a *Semaphore) GetBuildInformation(project string, branch, build int) (*BuildInformation, error) {
+	URL := fmt.Sprintf(getBuildInformationURL, a.baseURL, project, branch, build, a.authToken)
+	response, err := a.request(URL)
 	if err != nil {
 		return nil, err
 	}
@@ -109,9 +109,9 @@ func (a *Api) GetBuildInformation(project string, branch, build int) (*BuildInfo
 	return info, nil
 }
 
-func (a *Api) GetBuildLog(project string, branch, build int) (*BuildLog, error) {
-	url := fmt.Sprintf(getBuildLogURL, a.baseUrl, project, branch, build, a.authToken)
-	response, err := a.request(url)
+func (a *Semaphore) GetBuildLog(project string, branch, build int) (*BuildLog, error) {
+	URL := fmt.Sprintf(getBuildLogURL, a.baseURL, project, branch, build, a.authToken)
+	response, err := a.request(URL)
 	if err != nil {
 		return nil, err
 	}

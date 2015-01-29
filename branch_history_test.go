@@ -63,7 +63,7 @@ func Test_GetBranchHistory_Success(t *testing.T) {
                "started_at": "2012-10-02T15:01:41Z",
                "finished_at": "2012-10-02T15:03:53Z",
                "commit": {
-                  "id": "a31d32d5de89613369f934eb7d30fbeb08883334",
+                  "ID": "a31d32d5de89613369f934eb7d30fbeb08883334",
                   "URL": "https://github.com/renderedtext/base-app/commit/a31d32d5de89613369f934eb7d30fbeb08883334",
                   "author_name": "Vladimir Saric",
                   "author_email": "vladimir@renderedtext.com",
@@ -79,7 +79,7 @@ func Test_GetBranchHistory_Success(t *testing.T) {
                "started_at": "2012-10-02T14:47:06Z",
                "finished_at": "2012-10-02T14:51:35Z",
                "commit": {
-                  "id": "73fce130ad23f265add5d55ee1da1c23b38f85a4",
+                  "ID": "73fce130ad23f265add5d55ee1da1c23b38f85a4",
                   "URL": "https://github.com/renderedtext/base-app/commit/73fce130ad23f265add5d55ee1da1c23b38f85a4",
                   "author_name": "Marko Anastasov",
                   "author_email": "marko@renderedtext.com",
@@ -95,6 +95,6 @@ func Test_GetBranchHistory_Success(t *testing.T) {
 	actual, _ := client.GetBranchHistory("123", 123)
 
 	if !reflect.DeepEqual(actual, expected) {
-		t.Errorf("Response did not match expected \nA: %v\n\n E: %v\n\n", actual, expected)
+		t.Errorf("Response dID not match expected \nA: %v\n\n E: %v\n\n", actual, expected)
 	}
 }

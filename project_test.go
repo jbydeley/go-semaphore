@@ -67,7 +67,7 @@ func Test_GetProjects_Success(t *testing.T) {
 			"2012-09-14T11:16:51Z",
 			[]BranchStatus{
 				{
-					"mongoid3",
+					"mongoID3",
 					"https://semaphoreapp.com/projects/63/branches/89",
 					"https://semaphoreapp.com/api/v1/projects/3f1004b8343faabda63d441734526c854380ab89/85/status?auth_token=Yds3w6o26FLfJTnVK2y9",
 					"https://semaphoreapp.com/api/v1/projects/3f1004b8343faabda63d441734526c854380ab89/85?auth_token=Yds3w6o26FLfJTnVK2y9",
@@ -87,8 +87,8 @@ func Test_GetProjects_Success(t *testing.T) {
 	server, client := testAPICall(200, `
       [
          {
-            "id": 61,
-            "hash_id": "3f1004b8343faabda63d441734526c854380ab89",
+            "ID": 61,
+            "hash_ID": "3f1004b8343faabda63d441734526c854380ab89",
             "name": "testapp-sphinx",
             "owner": "renderedtext",
             "html_URL": "https://semaphoreapp.com/darkofabijan/testapp-sphinx",
@@ -125,7 +125,7 @@ func Test_GetProjects_Success(t *testing.T) {
                   "build_URL": "https://semaphoreapp.com/api/v1/projects/dccc4ab03f2b47167cac51553d58e468c6750c2c/58394/builds/5?auth_token=qH36J7zzMfAGG8xmF72f",
                   "build_html_URL": "https://semaphoreapp.com/projects/2420/branches/58394/builds/5",
                   "commit": {
-                     "id": "43ddb7516ecc743f0563abd7418f0bd3617348c4",
+                     "ID": "43ddb7516ecc743f0563abd7418f0bd3617348c4",
                      "URL": "https://github.com/rastasheep/heroku-deploy-test/commit/43ddb7516ecc743f0563abd7418f0bd3617348c4",
                      "author_name": "Aleksandar Diklic",
                      "author_email": "rastasheep3@gmail.com",
@@ -136,8 +136,8 @@ func Test_GetProjects_Success(t *testing.T) {
             ]
          },
          {
-            "id": 63,
-            "hash_id": "649e584dc507ca4b73e1374d3125ef0b567a949c",
+            "ID": 63,
+            "hash_ID": "649e584dc507ca4b73e1374d3125ef0b567a949c",
             "name": "testapp-mongodb",
             "owner": "renderedtext",
             "html_URL": "https://semaphoreapp.com/darkofabijan/testapp-mongodb",
@@ -145,7 +145,7 @@ func Test_GetProjects_Success(t *testing.T) {
             "updated_at": "2012-09-14T11:16:51Z",
             "branches": [
                {
-                  "branch_name": "mongoid3",
+                  "branch_name": "mongoID3",
                   "branch_URL": "https://semaphoreapp.com/projects/63/branches/89",
                   "branch_status_URL": "https://semaphoreapp.com/api/v1/projects/3f1004b8343faabda63d441734526c854380ab89/85/status?auth_token=Yds3w6o26FLfJTnVK2y9",
                   "branch_history_URL": "https://semaphoreapp.com/api/v1/projects/3f1004b8343faabda63d441734526c854380ab89/85?auth_token=Yds3w6o26FLfJTnVK2y9",
@@ -167,6 +167,6 @@ func Test_GetProjects_Success(t *testing.T) {
 	actual, _ := client.GetProjects()
 
 	if !reflect.DeepEqual(actual, expected) {
-		t.Errorf("Response did not match expected \nA: %v\n\n E: %v\n\n", actual, expected)
+		t.Errorf("Response dID not match expected \nA: %v\n\n E: %v\n\n", actual, expected)
 	}
 }

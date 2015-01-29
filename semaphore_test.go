@@ -7,7 +7,7 @@ import (
 	"net/url"
 )
 
-func testAPICall(code int, body string) (*httptest.Server, *Api) {
+func testAPICall(code int, body string) (*httptest.Server, *Semaphore) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(code)
 		w.Header().Set("Content-Type", "application/json")
@@ -21,7 +21,7 @@ func testAPICall(code int, body string) (*httptest.Server, *Api) {
 	}
 
 	httpClient := &http.Client{Transport: transport}
-	api := &Api{"123", server.URL, httpClient}
+	api := &Semaphore{"123", server.URL, httpClient}
 
 	return server, api
 }
@@ -29,5 +29,5 @@ func testAPICall(code int, body string) (*httptest.Server, *Api) {
 // To create an API you'll need to give your
 // authorization token.
 func ExampleExamples() {
-	NewApi("auth_token")
+	NewSemaphore("auth_token")
 }

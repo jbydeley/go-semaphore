@@ -2,12 +2,12 @@ package semaphore
 
 type BranchStatus struct {
 	Name         string `json:"branch_name"`
-	BranchUrl    string `json:"branch_url"`
-	StatusUrl    string `json:"branch_status_url"`
-	HistoryUrl   string `json:"branch_history_url"`
+	BranchURL    string `json:"branch_url"`
+	StatusURL    string `json:"branch_status_url"`
+	HistoryURL   string `json:"branch_history_url"`
 	ProjectName  string `json:"project_name"`
-	BuildUrl     string `json:"build_url"`
-	BuildInfoUrl string `json:"build_info_url"`
+	BuildURL     string `json:"build_url"`
+	BuildInfoURL string `json:"build_info_url"`
 	BuildNumber  int    `json:"build_number"`
 	Result       string `json:"result"`
 	Started      string `json:"started_at"`

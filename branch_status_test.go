@@ -41,7 +41,7 @@ func Test_GetBranchStatus_Success(t *testing.T) {
          "started_at": "2012-07-09T15:23:53Z",
          "finished_at": "2012-07-09T15:30:16Z",
          "commit": {
-            "id": "dc395381e650f3bac18457909880829fc20e34ba",
+            "ID": "dc395381e650f3bac18457909880829fc20e34ba",
             "URL": "https://github.com/renderedtext/base-app/commit/dc395381e650f3bac18457909880829fc20e34ba",
             "author_name": "Vladimir Saric",
             "author_email": "vladimir@renderedtext.com",
@@ -55,6 +55,6 @@ func Test_GetBranchStatus_Success(t *testing.T) {
 	actual, _ := client.GetBranchStatus("123", 123)
 
 	if !reflect.DeepEqual(actual, expected) {
-		t.Errorf("Response did not match expected \nA: %v\n\n E: %v\n\n", actual, expected)
+		t.Errorf("Response dID not match expected \nA: %v\n\n E: %v\n\n", actual, expected)
 	}
 }

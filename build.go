@@ -1,8 +1,8 @@
 package semaphore
 
 type Build struct {
-	Url         string `json:"build_url"`
-	InfoUrl     string `json:"build_info_url"`
+	URL         string `json:"build_url"`
+	InfoURL     string `json:"build_info_url"`
 	BuildNumber int    `json:"build_number"`
 	Result      string `json:"result"`
 	Started     string `json:"started_at"`

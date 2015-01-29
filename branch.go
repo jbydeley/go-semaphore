@@ -1,7 +1,7 @@
 package semaphore
 
 type Branch struct {
-	Id   int    `json:"id"`
+	ID   int    `json:"ID"`
 	Name string `json:"name"`
-	Url  string `json:"branch_url"`
+	URL  string `json:"branch_url"`
 }

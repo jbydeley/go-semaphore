@@ -31,7 +31,7 @@ func Test_GetBuildInformation_Success(t *testing.T) {
 	server, client := testAPICall(200, `
       {
         "commits": [{
-          "id": "ce0d543b875884f09cf1e287fb303fb91a9e28a0",
+          "ID": "ce0d543b875884f09cf1e287fb303fb91a9e28a0",
           "URL": "https://github.com/renderedtext/base-app/commit/ce0d543b875884f09cf1e287fb303fb91a9e28a0",
           "author_name": "Marko Anastasov",
           "author_email": "marko@renderedtext.com",
@@ -52,9 +52,9 @@ func Test_GetBuildInformation_Success(t *testing.T) {
 	defer server.Close()
 
 	// Test the method!
-	actual, _ := client.GetBuildInformation("hash_id", 1234, 4321)
+	actual, _ := client.GetBuildInformation("hash_ID", 1234, 4321)
 
 	if !reflect.DeepEqual(actual, expected) {
-		t.Errorf("Response did not match expected \nA: %v\n\n E: %v\n\n", actual, expected)
+		t.Errorf("Response dID not match expected \nA: %v\n\n E: %v\n\n", actual, expected)
 	}
 }

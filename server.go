@@ -9,10 +9,10 @@ type Server struct {
 	Updated      string `json:"updated_at"`
 	Started      string `json:"started_at"`
 	Finished     string `json:"finished_at"`
-	HtmlUrl      string `json:"html_url"`
-	DeployUrl    string `json:"deploy_url"`
-	DeployLogUrl string `json:"deploy_log_url"`
-	BuildUrl     string `json:"build_url"`
-	BuildHtmlUrl string `json:"build_html_url"`
+	HTMLURL      string `json:"html_url"`
+	DeployURL    string `json:"deploy_url"`
+	DeployLogURL string `json:"deploy_log_url"`
+	BuildURL     string `json:"build_url"`
+	BuildHTMLURL string `json:"build_html_url"`
 	Commit       Commit `json:"commit"`
 }

@@ -10,6 +10,6 @@ type BuildInformation struct {
 	Updated     string   `json:"updated_at"`
 	Started     string   `json:"started_at"`
 	Finished    string   `json:"finished_at"`
-	HtmlUrl     string   `json:"html_url"`
-	BuildLogUrl string   `json:"build_log_url"`
+	HTMLURL     string   `json:"html_url"`
+	BuildLogURL string   `json:"build_log_url"`
 }

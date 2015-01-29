@@ -88,9 +88,9 @@ func Test_GetBuildLog_Success(t *testing.T) {
 	defer server.Close()
 
 	// Test the method!
-	actual, _ := client.GetBuildLog("hash_id", 1234, 4321)
+	actual, _ := client.GetBuildLog("hash_ID", 1234, 4321)
 
 	if !reflect.DeepEqual(actual, expected) {
-		t.Errorf("Response did not match expected \nA: %v\n\n E: %v\n\n", actual, expected)
+		t.Errorf("Response dID not match expected \nA: %v\n\n E: %v\n\n", actual, expected)
 	}
 }
