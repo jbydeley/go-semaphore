@@ -45,7 +45,7 @@ func Test_GetBuildLog_Success(t *testing.T) {
 		},
 		"https://semaphoreapp.com/api/v1/projects/3f1004b8343faabda63d441734526c854380ab89/85/builds/1?auth_token=Yds3w6o26FLfJTnVK2y9",
 	}
-	server, client := testApiCall(200, `
+	server, client := testAPICall(200, `
       {
         "threads": [
           {
@@ -83,7 +83,7 @@ func Test_GetBuildLog_Success(t *testing.T) {
             ]
           }
         ],
-        "build_info_url": "https://semaphoreapp.com/api/v1/projects/3f1004b8343faabda63d441734526c854380ab89/85/builds/1?auth_token=Yds3w6o26FLfJTnVK2y9"
+        "build_info_URL": "https://semaphoreapp.com/api/v1/projects/3f1004b8343faabda63d441734526c854380ab89/85/builds/1?auth_token=Yds3w6o26FLfJTnVK2y9"
       }`)
 	defer server.Close()
 

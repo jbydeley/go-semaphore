@@ -9,12 +9,12 @@ import (
 )
 
 const (
-	GET_PROJECTS_URL          = "%v/api/v1/projects?auth_token=%v"
-	GET_BRANCHES_URL          = "%v/api/v1/projects/%v/branches?auth_token=%v"
-	GET_BRANCH_STATUS_URL     = "%v/api/v1/projects/%v/%v/status?auth_token=%v"
-	GET_BRANCH_HISTORY_URL    = "%v/api/v1/projects/%v/%v?auth_token=%v"
-	GET_BUILD_INFORMATION_URL = "%v/api/v1/projects/%v/%v/builds/%v?auth_token=%v"
-	GET_BUILD_LOG_URL         = "%v/api/v1/projects/%v/%v/builds/%v/log?auth_token=%v"
+	getProjectsURL         = "%v/api/v1/projects?auth_token=%v"
+	getBranchesURL         = "%v/api/v1/projects/%v/branches?auth_token=%v"
+	getBranchStatusURL     = "%v/api/v1/projects/%v/%v/status?auth_token=%v"
+	getBranchHistoryURL    = "%v/api/v1/projects/%v/%v?auth_token=%v"
+	getBuildInformationURL = "%v/api/v1/projects/%v/%v/builds/%v?auth_token=%v"
+	getBuildLogURL         = "%v/api/v1/projects/%v/%v/builds/%v/log?auth_token=%v"
 )
 
 func (a *Api) request(url string) ([]byte, error) {
@@ -40,7 +40,7 @@ func NewApi(auth string) *Api {
 }
 
 func (a *Api) GetProjects() ([]Project, error) {
-	url := fmt.Sprintf(GET_PROJECTS_URL, a.baseUrl, a.authToken)
+	url := fmt.Sprintf(getProjectsURL, a.baseUrl, a.authToken)
 	response, err := a.request(url)
 	if err != nil {
 		return nil, err
@@ -54,7 +54,7 @@ func (a *Api) GetProjects() ([]Project, error) {
 }
 
 func (a *Api) GetBranches(project string) ([]Branch, error) {
-	url := fmt.Sprintf(GET_BRANCHES_URL, a.baseUrl, project, a.authToken)
+	url := fmt.Sprintf(getBranchesURL, a.baseUrl, project, a.authToken)
 	response, err := a.request(url)
 	if err != nil {
 		return nil, err
@@ -68,7 +68,7 @@ func (a *Api) GetBranches(project string) ([]Branch, error) {
 }
 
 func (a *Api) GetBranchStatus(project string, branch int) (*BranchStatus, error) {
-	url := fmt.Sprintf(GET_BRANCH_STATUS_URL, a.baseUrl, project, branch, a.authToken)
+	url := fmt.Sprintf(getBranchStatusURL, a.baseUrl, project, branch, a.authToken)
 	response, err := a.request(url)
 	if err != nil {
 		return nil, err
@@ -82,7 +82,7 @@ func (a *Api) GetBranchStatus(project string, branch int) (*BranchStatus, error)
 }
 
 func (a *Api) GetBranchHistory(project string, branch int) (*BranchHistory, error) {
-	url := fmt.Sprintf(GET_BRANCH_HISTORY_URL, a.baseUrl, project, branch, a.authToken)
+	url := fmt.Sprintf(getBranchHistoryURL, a.baseUrl, project, branch, a.authToken)
 	response, err := a.request(url)
 	if err != nil {
 		return nil, err
@@ -96,7 +96,7 @@ func (a *Api) GetBranchHistory(project string, branch int) (*BranchHistory, erro
 }
 
 func (a *Api) GetBuildInformation(project string, branch, build int) (*BuildInformation, error) {
-	url := fmt.Sprintf(GET_BUILD_INFORMATION_URL, a.baseUrl, project, branch, build, a.authToken)
+	url := fmt.Sprintf(getBuildInformationURL, a.baseUrl, project, branch, build, a.authToken)
 	response, err := a.request(url)
 	if err != nil {
 		return nil, err
@@ -110,7 +110,7 @@ func (a *Api) GetBuildInformation(project string, branch, build int) (*BuildInfo
 }
 
 func (a *Api) GetBuildLog(project string, branch, build int) (*BuildLog, error) {
-	url := fmt.Sprintf(GET_BUILD_LOG_URL, a.baseUrl, project, branch, build, a.authToken)
+	url := fmt.Sprintf(getBuildLogURL, a.baseUrl, project, branch, build, a.authToken)
 	response, err := a.request(url)
 	if err != nil {
 		return nil, err

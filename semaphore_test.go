@@ -7,7 +7,7 @@ import (
 	"net/url"
 )
 
-func testApiCall(code int, body string) (*httptest.Server, *Api) {
+func testAPICall(code int, body string) (*httptest.Server, *Api) {
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(code)
 		w.Header().Set("Content-Type", "application/json")

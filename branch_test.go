@@ -11,22 +11,22 @@ func Test_GetBranches_Success(t *testing.T) {
 		{1120, "development", "https://semaphoreapp.com/api/v1/projects/:hash_id/1120/status?auth_token=:auth_token"},
 		{987, "branches_api", "https://semaphoreapp.com/api/v1/projects/:hash_id/987/status?auth_token=:auth_token"},
 	}
-	server, client := testApiCall(200, `
+	server, client := testAPICall(200, `
       [
          {
             "id": 1324,
             "name": "new-build-page",
-            "branch_url": "https://semaphoreapp.com/api/v1/projects/:hash_id/1324/status?auth_token=:auth_token"
+            "branch_URL": "https://semaphoreapp.com/api/v1/projects/:hash_id/1324/status?auth_token=:auth_token"
          },
          {
             "id": 1120,
             "name": "development",
-            "branch_url": "https://semaphoreapp.com/api/v1/projects/:hash_id/1120/status?auth_token=:auth_token"
+            "branch_URL": "https://semaphoreapp.com/api/v1/projects/:hash_id/1120/status?auth_token=:auth_token"
          },
          {
             "id": 987,
             "name": "branches_api",
-            "branch_url": "https://semaphoreapp.com/api/v1/projects/:hash_id/987/status?auth_token=:auth_token"
+            "branch_URL": "https://semaphoreapp.com/api/v1/projects/:hash_id/987/status?auth_token=:auth_token"
          }
       ]`)
 	defer server.Close()
