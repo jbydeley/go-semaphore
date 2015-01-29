@@ -7,7 +7,7 @@ import (
 
 func Test_GetProjects_Success(t *testing.T) {
 	expected := []Project{
-		Project{
+		{
 			61,
 			"3f1004b8343faabda63d441734526c854380ab89",
 			"testapp-sphinx",
@@ -16,7 +16,7 @@ func Test_GetProjects_Success(t *testing.T) {
 			"2012-09-04T11:53:22Z",
 			"2012-09-04T12:01:17Z",
 			[]BranchStatus{
-				BranchStatus{
+				{
 					"master",
 					"https://semaphoreapp.com/projects/61/branches/85",
 					"https://semaphoreapp.com/api/v1/projects/3f1004b8343faabda63d441734526c854380ab89/85/status?auth_token=Yds3w6o26FLfJTnVK2y9",
@@ -32,7 +32,7 @@ func Test_GetProjects_Success(t *testing.T) {
 				},
 			},
 			[]Server{
-				Server{
+				{
 					"heroku-deploy-test",
 					"server-heroku-master-automatic-1",
 					1,
@@ -57,7 +57,7 @@ func Test_GetProjects_Success(t *testing.T) {
 				},
 			},
 		},
-		Project{
+		{
 			63,
 			"649e584dc507ca4b73e1374d3125ef0b567a949c",
 			"testapp-mongodb",
@@ -66,7 +66,7 @@ func Test_GetProjects_Success(t *testing.T) {
 			"2012-09-14T10:53:38Z",
 			"2012-09-14T11:16:51Z",
 			[]BranchStatus{
-				BranchStatus{
+				{
 					"mongoid3",
 					"https://semaphoreapp.com/projects/63/branches/89",
 					"https://semaphoreapp.com/api/v1/projects/3f1004b8343faabda63d441734526c854380ab89/85/status?auth_token=Yds3w6o26FLfJTnVK2y9",

@@ -13,7 +13,7 @@ func Test_GetBranchHistory_Success(t *testing.T) {
 		"https://semaphoreapp.com/api/v1/projects/649e584dc507ca4b73e1374d3125ef0b567a949c/89?auth_token=Yds3w6o26FLfJTnVK2y9",
 		"base-app",
 		[]Build{
-			Build{
+			{
 				"https://semaphoreapp.com/projects/57/branches/80/builds/46",
 				"https://semaphoreapp.com/api/v1/projects/649e584dc507ca4b73e1374d3125ef0b567a949c/80/builds/1?auth_token=Yds3w6o26FLfJTnVK2y9",
 				46,
@@ -29,7 +29,7 @@ func Test_GetBranchHistory_Success(t *testing.T) {
 					"2012-10-02T07:00:14Z",
 				},
 			},
-			Build{
+			{
 				"https://semaphoreapp.com/projects/57/branches/80/builds/45",
 				"https://semaphoreapp.com/api/v1/projects/649e584dc507ca4b73e1374d3125ef0b567a949c/80/builds/1?auth_token=Yds3w6o26FLfJTnVK2y9",
 				45,

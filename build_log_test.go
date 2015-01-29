@@ -8,10 +8,10 @@ import (
 func Test_GetBuildLog_Success(t *testing.T) {
 	expected := &BuildLog{
 		[]Thread{
-			Thread{
+			{
 				1,
 				[]Command{
-					Command{
+					{
 						"bundle install --deployment --path vendor/bundle",
 						"0",
 						"Fetching source index from http://rubygems.org/ Installing rake (10.0.3) Installing i18n (0.6.1) Installing multi_json (1.6.1) Installing activesupport (3.2.11) Installing builder (3.0.4) Installing activemodel (3.2.11) Installing erubis (2.7.0) Installing journey (1.0.4) Installing rack (1.4.5) Installing rack-cache (1.2) Installing rack-test (0.6.2) Installing hike (1.2.1) Installing tilt (1.3.3) Installing sprockets (2.2.2) Installing actionpack (3.2.11) Installing mime-types (1.21) Installing polyglot (0.3.3) Installing treetop (1.4.12) Installing mail (2.4.4) Installing actionmailer (3.2.11) Installing arel (3.0.2) Installing tzinfo (0.3.35) Installing activerecord (3.2.11) Installing activeresource (3.2.11) Installing addressable (2.3.3) Installing kaminari (0.14.1) Installing polyamorous (0.5.0) Installing meta_search (1.1.3) Using bundler (1.3.0) Installing rack-ssl (1.3.2) Installing json (1.7.7)",
@@ -19,7 +19,7 @@ func Test_GetBuildLog_Success(t *testing.T) {
 						"2013-03-12T09:24:37Z",
 						"00:45",
 					},
-					Command{
+					{
 						"gem --version",
 						"0",
 						"1.8.23",
@@ -29,10 +29,10 @@ func Test_GetBuildLog_Success(t *testing.T) {
 					},
 				},
 			},
-			Thread{
+			{
 				2,
 				[]Command{
-					Command{
+					{
 						"bundle exec rake db:test:prepare",
 						"0",
 						"",

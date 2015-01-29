@@ -8,7 +8,7 @@ import (
 func Test_GetBuildInformation_Success(t *testing.T) {
 	expected := &BuildInformation{
 		[]Commit{
-			Commit{
+			{
 				"ce0d543b875884f09cf1e287fb303fb91a9e28a0",
 				"https://github.com/renderedtext/base-app/commit/ce0d543b875884f09cf1e287fb303fb91a9e28a0",
 				"Marko Anastasov",
