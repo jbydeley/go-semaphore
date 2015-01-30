@@ -2,9 +2,13 @@ package semaphore
 
 import (
 	"fmt"
+	"io/ioutil"
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"net/url"
+	"reflect"
+	"testing"
 )
 
 func testAPICall(code int, body string) (*httptest.Server, *Semaphore) {
@@ -21,9 +25,31 @@ func testAPICall(code int, body string) (*httptest.Server, *Semaphore) {
 	}
 
 	httpClient := &http.Client{Transport: transport}
-	api := &Semaphore{"123", server.URL, httpClient}
+	logger := log.New(ioutil.Discard, "", log.LstdFlags)
+	api := &Semaphore{"123", server.URL, httpClient, logger}
 
 	return server, api
+}
+
+func Test_NewSemaphore(t *testing.T) {
+	api := NewSemaphore("123")
+
+	if api.authToken != "123" {
+		t.Errorf("Auth token should have been 123 but was %v", api.authToken)
+	}
+}
+
+func Test_NewSemaphoreWithLogger(t *testing.T) {
+	logger := log.New(ioutil.Discard, "TEST", log.LstdFlags)
+	api := NewSemaphoreWithLogger("123", logger)
+
+	if api.authToken != "123" {
+		t.Errorf("Auth token should have been 123 but was %v", api.authToken)
+	}
+
+	if !reflect.DeepEqual(logger, api.log) {
+		t.Error("Logger didn't set correctly")
+	}
 }
 
 // To create an API you'll need to give your

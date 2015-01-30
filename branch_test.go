@@ -45,12 +45,27 @@ func Test_GetBranches_NotFound(t *testing.T) {
 
 	results, err := client.GetBranches("123")
 
-	if err != ErrHttpNotFound {
-		t.Error("Should have recieved 404 but did not")
+	if err != ErrHTTPNotFound {
+		t.Errorf("Should have recieved 404 but got '%v'", err)
 	}
 
 	if results != nil {
-		t.Error("Results should be nil")
+		t.Errorf("Results should be nil but got '%+v'", results)
+	}
+}
+
+func Test_GetBranches_NotRecognized(t *testing.T) {
+	server, client := testAPICall(200, "???")
+	defer server.Close()
+
+	results, err := client.GetBranches("123")
+
+	if err != ErrResponseNotRecognized {
+		t.Errorf("Should have received an ErrResponseNotRecognized but got '%v'", err)
+	}
+
+	if results != nil {
+		t.Errorf("Results should be nil but got '%+v'", results)
 	}
 }
 
@@ -61,10 +76,10 @@ func Test_GetBranches_FailedAuthentication(t *testing.T) {
 	results, err := client.GetBranches("123")
 
 	if err != ErrNotAuthorized {
-		t.Error("Should have recieved 401 but did not")
+		t.Errorf("Should have recieved 401 but got '%v'", err)
 	}
 
 	if results != nil {
-		t.Error("Results should be nil")
+		t.Errorf("Results should be nil but got '%+v'", results)
 	}
 }

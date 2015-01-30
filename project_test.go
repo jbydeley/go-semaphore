@@ -170,3 +170,48 @@ func Test_GetProjects_Success(t *testing.T) {
 		t.Errorf("Response dID not match expected \nA: %v\n\n E: %v\n\n", actual, expected)
 	}
 }
+
+func Test_GetProjects_NotFound(t *testing.T) {
+	server, client := testAPICall(404, "")
+	defer server.Close()
+
+	results, err := client.GetProjects()
+
+	if err != ErrHTTPNotFound {
+		t.Errorf("Should have recieved 404 but got '%v'", err)
+	}
+
+	if results != nil {
+		t.Errorf("Results should be nil but got '%+v'", results)
+	}
+}
+
+func Test_GetProjects_NotRecognized(t *testing.T) {
+	server, client := testAPICall(200, "???")
+	defer server.Close()
+
+	results, err := client.GetProjects()
+
+	if err != ErrResponseNotRecognized {
+		t.Errorf("Should have received an ErrResponseNotRecognized but got '%v'", err)
+	}
+
+	if results != nil {
+		t.Errorf("Results should be nil but got '%+v'", results)
+	}
+}
+
+func Test_GetProjects_FailedAuthentication(t *testing.T) {
+	server, client := testAPICall(401, "")
+	defer server.Close()
+
+	results, err := client.GetProjects()
+
+	if err != ErrNotAuthorized {
+		t.Errorf("Should have recieved 401 but got '%v'", err)
+	}
+
+	if results != nil {
+		t.Errorf("Results should be nil but got '%+v'", results)
+	}
+}
