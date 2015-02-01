@@ -3,6 +3,10 @@
 [![Coverage Status](https://coveralls.io/repos/jbydeley/go-semaphore/badge.svg?branch=master)](https://coveralls.io/r/jbydeley/go-semaphore?branch=master)
 [![GoDoc](https://godoc.org/github.com/jbydeley/go-semaphore?status.svg)](https://godoc.org/github.com/jbydeley/go-semaphore)
 
+Go-Semaphore is an SDK to map to the SemaphoreApp API. This lets you check on build status, branch status and branch history. Check the [GoDoc link](https://godoc.org/github.com/jbydeley/go-semaphore#Semaphore) for a list of functions you can call. Check the [semaphore api](https://semaphoreapp.com/docs/api.html) for more information.
+
+**TODO:** Implement POST methods.
+
 # Installation
 
 Get the package
