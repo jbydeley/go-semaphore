@@ -5,7 +5,7 @@
 
 Go-Semaphore is an SDK to map to the SemaphoreApp API. This lets you check on build status, branch status and branch history. Check the [GoDoc link](https://godoc.org/github.com/jbydeley/go-semaphore#Semaphore) for a list of functions you can call. Check the [semaphore api](https://semaphoreapp.com/docs/api.html) for more information.
 
-**TODO:** Implement POST methods.
+**TODO:** Implement build from commit.
 
 # Installation
 
