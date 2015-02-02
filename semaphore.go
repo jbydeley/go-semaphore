@@ -2,6 +2,7 @@
 package semaphore
 
 import (
+	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -28,6 +29,9 @@ const (
 	getBranchHistoryURL    = "%v/api/v1/projects/%v/%v?auth_token=%v"
 	getBuildInformationURL = "%v/api/v1/projects/%v/%v/builds/%v?auth_token=%v"
 	getBuildLogURL         = "%v/api/v1/projects/%v/%v/builds/%v/log?auth_token=%v"
+
+	postRebuildBranch = "%v/api/v1/projects/%v/%v/build?auth_token=%v"
+	postStopBuild     = "%v/api/v1/projects/%v/%v/builds/%v/stop?auth_token=%v"
 )
 
 func (a *Semaphore) request(URL string) ([]byte, error) {
@@ -45,7 +49,25 @@ func (a *Semaphore) request(URL string) ([]byte, error) {
 	default:
 		return ioutil.ReadAll(resp.Body)
 	}
+}
 
+func (a *Semaphore) post(URL string) ([]byte, error) {
+	var empty []byte
+	buf := bytes.NewReader(empty)
+	resp, err := a.httpClient.Post(URL, "plain/text", buf)
+
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	switch resp.StatusCode {
+	case 404:
+		return nil, ErrHTTPNotFound
+	case 401:
+		return nil, ErrNotAuthorized
+	default:
+		return ioutil.ReadAll(resp.Body)
+	}
 }
 
 // Semaphore API
@@ -161,3 +183,51 @@ func (a *Semaphore) GetBuildLog(project string, branch, build int) (*BuildLog, e
 	}
 	return log, nil
 }
+
+// RebuildBranch returns a BuildResponse object for a given project + branch
+func (a *Semaphore) RebuildBranch(project string, branch int) (*BuildResponse, error) {
+	URL := fmt.Sprintf(postRebuildBranch, a.baseURL, project, branch, a.authToken)
+	response, err := a.post(URL)
+	if err != nil {
+		a.log.Print(err)
+		return nil, err
+	}
+
+	var buildResponse *BuildResponse
+	if err = json.Unmarshal(response, &buildResponse); err != nil {
+		return nil, ErrResponseNotRecognized
+	}
+	return buildResponse, nil
+}
+
+func (a *Semaphore) StopBuild(project string, branch, build int) (*BuildResponse, error) {
+	URL := fmt.Sprintf(postStopBuild, a.baseURL, project, branch, build, a.authToken)
+	response, err := a.post(URL)
+	if err != nil {
+		a.log.Print(err)
+		return nil, err
+	}
+
+	var buildResponse *BuildResponse
+	if err = json.Unmarshal(response, &buildResponse); err != nil {
+		return nil, ErrResponseNotRecognized
+	}
+	return buildResponse, nil
+}
+
+// This is not yet implemented (API unclear and need to contact semaphore for clarification)
+// LaunchBuild returns a BuildResponse object for a given project + branch + commit
+// func (a *Semaphore) LaunchBuild(project string, branch int, commit string) (*BuildResponse, error) {
+// 	URL := fmt.Sprintf(postLaunchBuild, a.baseURL, project, branch, commit, a.authToken)
+// 	response, err := a.post(URL)
+// 	if err != nil {
+// 		a.log.Print(err)
+// 		return nil, err
+// 	}
+
+// 	var buildResponse *BuildResponse
+// 	if err = json.Unmarshal(response, &buildResponse); err != nil {
+// 		return nil, ErrResponseNotRecognized
+// 	}
+// 	return buildResponse, nil
+// }

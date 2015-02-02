@@ -10,3 +10,19 @@ type Build struct {
 	Finished    string `json:"finished_at"`
 	Commit      Commit `json:"commit"`
 }
+
+// RebuildResponse model
+type BuildResponse struct {
+	Commits      []Commit `json:"commits"`
+	ProjectName  string   `json:"project_name"`
+	BranchName   string   `json:"branch_name"`
+	Number       int      `json:"number"`
+	Result       string   `json:"result,omitempty"`
+	Created      string   `json:"created_at"`
+	Updated      string   `json:"updated_at"`
+	Started      string   `json:"started_at,omitempty"`
+	Finished     string   `json:"finished_at,omitempty"`
+	HTMLURL      string   `json:"html_url"`
+	BuildLogURL  string   `json:"build_log_url"`
+	BuildInfoURL string   `json:"build_info_url"`
+}
