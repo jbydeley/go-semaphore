@@ -43,3 +43,4 @@ branchStatus, err := api.GetBranchStatus("project_hash", branch_id)
 ```
 
 [GetBranchStatus](https://godoc.org/github.com/jbydeley/go-semaphore#Semaphore.GetBranchStatus) returns a [branch status](https://godoc.org/github.com/jbydeley/go-semaphore#BranchStatus).
+
