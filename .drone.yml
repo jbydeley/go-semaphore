@@ -5,4 +5,4 @@ env:
     - GOROOT=/usr/local/go
     - PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 script:
-    - go test
+    - go test -v
